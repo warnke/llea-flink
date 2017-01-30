@@ -1,2 +1,3 @@
-# llea-flink
-Streaming pipeline project for low latency distributed processing of sensor data.
+# Low Latency Event Alerts Streaming Pipeline with Flink
+
+* See existing [repo](https://github.com/warnke/llea)
