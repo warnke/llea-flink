@@ -20,4 +20,4 @@ config/download_tech_llea_flink
 config/datanodes.yml
 config/cluster_name.txt
 config/namenode.yml
-
+config/db.yml
