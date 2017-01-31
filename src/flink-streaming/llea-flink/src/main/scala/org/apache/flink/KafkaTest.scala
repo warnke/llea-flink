@@ -26,7 +26,7 @@ class LleaRedisMapper extends RedisMapper[String]{
   //override def getKeyFromData(data: (String, String)): String = ("asdf", "qwert)" //data._1
   //override def getValueFromData(data: (String, String)): String = "123" //data._2
   override def getKeyFromData(data: (String)): String = "qwer" //data._1
-  override def getValueFromData(data: (String)): String = "asdf" //data._2
+  override def getValueFromData(data: (String)): String = data //data._2
 }
 
 object Main {
