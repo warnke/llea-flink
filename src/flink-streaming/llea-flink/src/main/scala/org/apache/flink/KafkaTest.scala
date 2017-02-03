@@ -55,8 +55,14 @@ object Main {
     // val conf = new FlinkJedisPoolConfig.Builder().setHost(config.get("redis.host")).build()
     val conf = new FlinkJedisPoolConfig.Builder().setHost("52.25.10.79").build()
 
+    // function to convert a timestamp to 30 second time slot
+    def convert_to_30sec(timestamp: String): String = {
+      (timestamp.toDouble.toLong/30*30).toString
+    }
+
     val stream = env
       .addSource(new FlinkKafkaConsumer09[String]("pipeline", new SimpleStringSchema(), properties))
+      //.keyBy()
       // add algorithm here....
       // in the end: data must be kv._1
       // in the end: data must be kv._2
