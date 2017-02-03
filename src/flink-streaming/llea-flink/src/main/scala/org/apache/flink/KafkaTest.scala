@@ -36,6 +36,7 @@ class LleaRedisMapper extends RedisMapper[String]{
     new RedisCommandDescription(RedisCommand.INCRBY)
   }
   override def getKeyFromData(data: (String)): String = "key_w_int_value" //data._1
+  // Value needs to be a string that can be typecast to an integer
   override def getValueFromData(data: (String)): String = "10" //data._2
 }
 
