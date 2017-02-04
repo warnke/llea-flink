@@ -40,6 +40,8 @@ class LleaRedisMapper extends RedisMapper[String]{
   override def getValueFromData(data: (String)): String = "10" //data._2
 }
 
+
+
 object Main {
   def main(args: Array[String]) {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
@@ -63,15 +65,17 @@ object Main {
 
     val stream = env
       .addSource(new FlinkKafkaConsumer09[String]("pipeline", new SimpleStringSchema(), properties))
+
+      //val streamWindowed = stream.window(Time.of(5, TimeUnit.SECONDS)).every(Time.of(5, TimeUnit.SECONDS))
       //.keyBy()
       // add algorithm here....
       // in the end: data must be kv._1
       // in the end: data must be kv._2
       //.addSink(new RedisSink[(String)](conf, new LleaRedisMapper))
-      .addSink(new RedisSinkHeff[(String)](conf, new LleaRedisMapper))
+      //.addSink(new RedisSinkHeff[(String)](conf, new LleaRedisMapper))
       //.addSink(new FlinkKafkaProducer09[String]("localhost:9092", "flink-to-kafka", new SimpleStringSchema()))
      // 
-     //.print 
+     .print 
 
     env.execute("Flink Kafka Example")
   }
